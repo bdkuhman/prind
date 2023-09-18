@@ -15,7 +15,7 @@
 #  && venv/bin/pip install -r moonraker/scripts/moonraker-requirements.txt
 
 ## Runtime Image
-FROM python:3-slim-bookworm as run
+FROM python:3.10-slim-bookworm as run
 
 RUN apt update \
  && apt install -y \
