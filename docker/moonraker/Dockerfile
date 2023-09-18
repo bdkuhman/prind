@@ -56,7 +56,7 @@ RUN which apt-get
 
 RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
- && echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot /usr/bin/apt-get" > /etc/sudoers.d/moonraker
+ && echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, /usr/bin/apt-get" > /etc/sudoers.d/moonraker
 
 ## Start Moonraker
 USER moonraker
