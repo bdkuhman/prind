@@ -63,6 +63,7 @@ ENV MOONRAKER_VENV=/opt/venv
 ## Start Moonraker
 USER moonraker
 
+RUN mkdir "/opt/venv"
 
 WORKDIR /opt/moonraker/scripts
 RUN ./install-moonraker.sh -d /opt/printer_data
