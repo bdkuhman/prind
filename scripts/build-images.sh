@@ -21,7 +21,6 @@ context=$(echo -n ${dockerfile} | rev | cut -f2- -d'/' | rev)
 # Get latest commitref from upstream repo
 source=$(grep "ARG REPO" ${dockerfile} | sed -r 's/.*REPO=(.*)$/\1/g')
 ref=$(git ls-remote ${source} HEAD | cut -f1)
-shortref=$(echo -n ${ref} | cut -c 1-7)
 
 # Set label Values
 label_date=$(date --rfc-3339=seconds)
@@ -31,6 +30,7 @@ if [ "${CI}" == "true" ]; then
   label_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
   label_doc="${label_url}/blob/${GITHUB_SHA}/docker/${app}/README.md"
   label_src="${label_url}/blob/${GITHUB_SHA}/docker/${app}"
+  ref="${GITHUB_REF}"
 else
   label_prind_version="$(git rev-parse HEAD)"
   label_author="$(whoami)"
@@ -39,6 +39,8 @@ else
   label_src="local"
 fi
 
+
+shortref=$(echo -n ${ref} | cut -c 1-7)
 # Colorful output
 function log {
   echo -e "\033[0;36m## ${1} \033[0m"
