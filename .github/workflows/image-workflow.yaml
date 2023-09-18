@@ -7,6 +7,8 @@ on:
         type: string
         description: 'app image to build'
     secrets:
+      DOCKERHUB_REGISTRY:
+        required: true
       DOCKERHUB_USERNAME:
         required: true
       DOCKERHUB_TOKEN:
