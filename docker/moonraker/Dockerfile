@@ -1,18 +1,18 @@
 ## Get Code and Build venv
-FROM python:3-bookworm as build
+# FROM python:3-bookworm as build
 
-ARG REPO=https://github.com/Arksine/moonraker
-ARG VERSION=master
+# ARG REPO=https://github.com/Arksine/moonraker
+# ARG VERSION=master
 
-WORKDIR /opt
+# WORKDIR /opt
 
-RUN git clone ${REPO} moonraker \
- && cd moonraker \
- && git checkout ${VERSION} \
- && rm -rf .git
+# RUN git clone ${REPO} moonraker \
+#  && cd moonraker \
+#  && git checkout ${VERSION} \
+#  && rm -rf .git
 
-RUN python -m venv venv \
- && venv/bin/pip install -r moonraker/scripts/moonraker-requirements.txt
+# RUN python -m venv venv \
+#  && venv/bin/pip install -r moonraker/scripts/moonraker-requirements.txt
 
 ## Runtime Image
 FROM python:3-slim-bookworm as run
@@ -37,6 +37,15 @@ RUN apt update \
  && apt clean
 
 WORKDIR /opt
+
+RUN git clone https://github.com/Arksine/moonraker.git
+
+WORKDIR /opt/moonraker/scripts
+
+RUN ./install-moonraker.sh
+
+WORKDIR /opt
+
 RUN groupadd moonraker --gid 1000 \
  && useradd moonraker --uid 1000 --gid moonraker \
  && usermod moonraker --append --groups dialout
