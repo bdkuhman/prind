@@ -8,7 +8,7 @@ jobs:
     uses: ./.github/workflows/image-workflow.yaml
     with:
       app: moonraker
-    secrets:
       DOCKERHUB_REGISTRY: ghcr.io
       DOCKERHUB_USERNAME: bdkuhman
+    secrets:
       DOCKERHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
