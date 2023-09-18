@@ -56,6 +56,12 @@ RUN mkdir -p printer_data/run printer_data/gcodes printer_data/logs printer_data
 # COPY --chown=moonraker:moonraker --from=build /opt/moonraker ./moonraker
 # COPY --chown=moonraker:moonraker --from=build /opt/venv ./venv
 
+# RUN GET_PIP="/opt/venv/get-pip.py"
+# RUN curl https://bootstrap.pypa.io/pip/3.6/get-pip.py -o ${GET_PIP}
+# RUN python ${GET_PIP}
+# RUN rm ${GET_PIP}
+
+RUN mkdir /opt/venv/bin
 RUN ln -s /usr/bin/pip /opt/venv/bin/pip
 
 RUN ln -s /bin/systemctl /sbin/shutdown \
