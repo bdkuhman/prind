@@ -44,6 +44,9 @@ WORKDIR /opt/moonraker/scripts
 
 WORKDIR /opt
 
+RUN mkdir "/opt/venv"
+ENV MOONRAKER_VENV=/opt/venv
+
 RUN groupadd moonraker --gid 1000 \
  && useradd moonraker --uid 1000 --gid moonraker \
  && usermod moonraker --append --groups dialout
@@ -58,12 +61,10 @@ RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
  && echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, /usr/bin/apt-get" > /etc/sudoers.d/moonraker
 
-ENV MOONRAKER_VENV=/opt/venv
 
 ## Start Moonraker
 USER moonraker
 
-RUN mkdir "/opt/venv"
 
 WORKDIR /opt/moonraker/scripts
 RUN ./install-moonraker.sh -d /opt/printer_data
