@@ -44,7 +44,6 @@ WORKDIR /opt
 
 RUN mkdir "/opt/venv"
 ENV MOONRAKER_VENV=/opt/venv
-ENV HOME=/opt
 
 RUN groupadd moonraker --gid 1000 \
  && useradd moonraker --uid 1000 --gid moonraker \
@@ -52,7 +51,7 @@ RUN groupadd moonraker --gid 1000 \
 RUN mkdir -p printer_data/run printer_data/gcodes printer_data/logs printer_data/database printer_data/config \
  && chown -R moonraker:moonraker /opt/*
 
-RUN mkdir -p /home/moonraker /opt/.local
+RUN mkdir -p /home/moonraker
 RUN chown -R moonraker:moonraker /home/moonraker
 
 # COPY --chown=moonraker:moonraker --from=build /opt/moonraker ./moonraker
