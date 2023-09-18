@@ -52,6 +52,7 @@ RUN mkdir -p printer_data/run printer_data/gcodes printer_data/logs printer_data
 
 # COPY --chown=moonraker:moonraker --from=build /opt/moonraker ./moonraker
 # COPY --chown=moonraker:moonraker --from=build /opt/venv ./venv
+RUN which apt-get
 
 RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
@@ -65,6 +66,7 @@ RUN ./install-moonraker.sh -d /opt/printer_data
 
 EXPOSE 7125
 VOLUME ["/opt/printer_data/run", "/opt/printer_data/gcodes", "/opt/printer_data/logs", "/opt/printer_data/database", "/opt/printer_data/config"]
+WORKDIR /opt
 ENTRYPOINT ["/opt/venv/bin/python", "moonraker/moonraker/moonraker.py"]
 CMD ["-d", "/opt/printer_data"]
 
