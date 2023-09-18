@@ -76,9 +76,11 @@ USER moonraker
 WORKDIR /opt/moonraker/scripts
 RUN ./install-moonraker.sh -d /opt/printer_data -z 
 
-RUN sudo /bin/sh -c echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, /usr/bin/apt-get" > /etc/sudoers.d/moonraker
+RUN sudo /bin/sh -c echo 'test1'
 
-RUN sudo /bin/sh -c echo 'test'
+RUN sudo /bin/sh -c 'echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, /usr/bin/apt-get" > /etc/sudoers.d/moonraker'
+
+RUN sudo /bin/sh -c echo 'test2'
 
 EXPOSE 7125
 VOLUME ["/opt/printer_data/run", "/opt/printer_data/gcodes", "/opt/printer_data/logs", "/opt/printer_data/database", "/opt/printer_data/config"]
