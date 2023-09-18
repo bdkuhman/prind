@@ -42,8 +42,6 @@ RUN git clone https://github.com/Arksine/moonraker.git
 
 WORKDIR /opt/moonraker/scripts
 
-RUN ./install-moonraker.sh
-
 WORKDIR /opt
 
 RUN groupadd moonraker --gid 1000 \
@@ -61,6 +59,9 @@ RUN ln -s /bin/systemctl /sbin/shutdown \
 
 ## Start Moonraker
 USER moonraker
+
+RUN ./install-moonraker.sh
+
 EXPOSE 7125
 VOLUME ["/opt/printer_data/run", "/opt/printer_data/gcodes", "/opt/printer_data/logs", "/opt/printer_data/database", "/opt/printer_data/config"]
 ENTRYPOINT ["/opt/venv/bin/python", "moonraker/moonraker/moonraker.py"]
