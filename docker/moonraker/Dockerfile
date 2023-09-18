@@ -60,7 +60,7 @@ RUN mkdir -p printer_data/run printer_data/gcodes printer_data/logs printer_data
 # RUN rm ${GET_PIP}
 
 RUN mkdir /opt/venv/bin
-RUN ln -s /usr/bin/pip /opt/venv/bin/pip
+RUN ln -s `which pip` /opt/venv/bin/pip
 
 RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
@@ -69,9 +69,6 @@ RUN ln -s /bin/systemctl /sbin/shutdown \
 
 ## Start Moonraker
 USER moonraker
-
-RUN which pip
-RUN which pip3
 
 WORKDIR /opt/moonraker/scripts
 RUN ./install-moonraker.sh -d /opt/printer_data
