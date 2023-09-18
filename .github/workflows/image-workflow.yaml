@@ -60,4 +60,4 @@ jobs:
       
 
       - name: Run Build Script
-        run: bash ./scripts/build-images.sh ${{ inputs.app }} ${{ inputs.DOCKERHUB_REGISTRY }}/${{ inputs.DOCKERHB_USERNAME }}/
+        run: bash ./scripts/build-images.sh ${{ inputs.app }} ${{ inputs.DOCKERHUB_REGISTRY }}/${{ inputs.DOCKERHUB_USERNAME }}/
