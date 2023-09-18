@@ -33,6 +33,7 @@ RUN apt update \
       iproute2 \
       systemd \
       sudo \
+      git \
  && apt clean
 
 WORKDIR /opt
@@ -48,11 +49,6 @@ COPY --chown=moonraker:moonraker --from=build /opt/venv ./venv
 RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
  && echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot" > /etc/sudoers.d/moonraker
-
-#debug
-RUN which git > ~/git.txt
-RUN which apt > ~/apt.txt
-RUN chmod 777 /*.txt 
 
 ## Start Moonraker
 USER moonraker
