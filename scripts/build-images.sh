@@ -30,7 +30,7 @@ if [ "${CI}" == "true" ]; then
   label_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
   label_doc="${label_url}/blob/${GITHUB_SHA}/docker/${app}/README.md"
   label_src="${label_url}/blob/${GITHUB_SHA}/docker/${app}"
-  ref="${GITHUB_REF}"
+  ref="${GITHUB_SHA}"
 else
   label_prind_version="$(git rev-parse HEAD)"
   label_author="$(whoami)"
