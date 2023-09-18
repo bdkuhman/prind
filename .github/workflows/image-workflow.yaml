@@ -1,5 +1,8 @@
 name: base-image-build
 on:
+  push:
+    branches:
+      - dockerfile-mods
   workflow_call:
     inputs:
       app:
