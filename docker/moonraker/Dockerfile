@@ -55,7 +55,8 @@ RUN mkdir -p printer_data/run printer_data/gcodes printer_data/logs printer_data
 
 # COPY --chown=moonraker:moonraker --from=build /opt/moonraker ./moonraker
 # COPY --chown=moonraker:moonraker --from=build /opt/venv ./venv
-RUN which apt-get
+
+RUN ln -s /usr/bin/pip /opt/venv/bin/pip
 
 RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
