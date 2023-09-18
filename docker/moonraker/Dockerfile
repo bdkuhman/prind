@@ -52,8 +52,8 @@ RUN groupadd moonraker --gid 1000 \
 RUN mkdir -p printer_data/run printer_data/gcodes printer_data/logs printer_data/database printer_data/config \
  && chown -R moonraker:moonraker /opt/*
 
-COPY --chown=moonraker:moonraker --from=build /opt/moonraker ./moonraker
-COPY --chown=moonraker:moonraker --from=build /opt/venv ./venv
+# COPY --chown=moonraker:moonraker --from=build /opt/moonraker ./moonraker
+# COPY --chown=moonraker:moonraker --from=build /opt/venv ./venv
 
 RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
