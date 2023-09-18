@@ -53,8 +53,8 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v2.2.0
         with:
-          registry: ${{ vars.DOCKERHUB_REGISTRY }}
-          username: ${{ vars.DOCKERHUB_USERNAME }}
+          registry: ${{ inputs.DOCKERHUB_REGISTRY }}
+          username: ${{ inputs.DOCKERHUB_USERNAME }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       
