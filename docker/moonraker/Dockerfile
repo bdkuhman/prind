@@ -52,7 +52,7 @@ RUN groupadd moonraker --gid 1000 \
 RUN mkdir -p printer_data/run printer_data/gcodes printer_data/logs printer_data/database printer_data/config \
  && chown -R moonraker:moonraker /opt/*
 
-RUN mkdir -p /home/moonraker
+RUN mkdir -p /home/moonraker /opt/.local
 RUN chown -R moonraker:moonraker /home/moonraker
 
 # COPY --chown=moonraker:moonraker --from=build /opt/moonraker ./moonraker
