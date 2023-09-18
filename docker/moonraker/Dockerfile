@@ -40,8 +40,6 @@ WORKDIR /opt
 
 RUN git clone https://github.com/Arksine/moonraker.git
 
-WORKDIR /opt/moonraker/scripts
-
 WORKDIR /opt
 
 RUN mkdir "/opt/venv"
@@ -72,6 +70,8 @@ RUN ln -s /bin/systemctl /sbin/shutdown \
 ## Start Moonraker
 USER moonraker
 
+RUN which pip
+RUN which pip3
 
 WORKDIR /opt/moonraker/scripts
 RUN ./install-moonraker.sh -d /opt/printer_data
