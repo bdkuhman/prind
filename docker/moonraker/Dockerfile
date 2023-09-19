@@ -64,6 +64,7 @@ RUN chown -R moonraker:moonraker /home/moonraker
 
 RUN mkdir /opt/venv/bin
 RUN ln -s `which pip` /opt/venv/bin/pip
+RUN ln -s `which python` /opt/venv/bin/python
 
 RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
