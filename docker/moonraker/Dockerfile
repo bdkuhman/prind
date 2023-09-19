@@ -34,6 +34,7 @@ RUN apt update \
       systemd \
       sudo \
       git \
+      make \
  && apt clean
 
 WORKDIR /opt
@@ -48,7 +49,7 @@ COPY --chown=moonraker:moonraker --from=build /opt/venv ./venv
 
 RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
- && echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot" > /etc/sudoers.d/moonraker
+ && echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, `which make`" > /etc/sudoers.d/moonraker
 
 ## Start Moonraker
 USER moonraker
