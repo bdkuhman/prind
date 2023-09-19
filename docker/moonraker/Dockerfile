@@ -6,9 +6,9 @@ ARG VERSION=master
 
 WORKDIR /opt
 
-RUN git clone ${REPO} moonraker \
+RUN git clone https://github.com/Arksine/moonraker moonraker \
  && cd moonraker \
- && git checkout ${VERSION} \
+ && git checkout master \
  && rm -rf .git
 
 RUN python -m venv venv \
