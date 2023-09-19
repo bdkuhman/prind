@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - dockerfile-mods
+      - multistep
   workflow_dispatch:
   # schedule:
   #   - cron: '0 2 * * *'
