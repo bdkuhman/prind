@@ -1,5 +1,8 @@
 FROM balenalib/raspberrypi3-debian:latest
 
+#ARG REPO=https://github.com/mainsail-crew/crowsnest.git
+#ARG VERSION=master
+
 RUN install_packages git make
 
 WORKDIR /home/pi
