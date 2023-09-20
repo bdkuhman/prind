@@ -1,0 +1,17 @@
+name: 'Image: Crowsnest'
+on:
+  push:
+    branches:
+      - crowsnest
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 2 * * *'
+jobs:
+  build:
+    uses: ./.github/workflows/image-workflow.yaml
+    with:
+      app: crowsnest
+      DOCKERHUB_REGISTRY: ghcr.io
+      DOCKERHUB_USERNAME: bdkuhman
+    secrets:
+      DOCKERHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
