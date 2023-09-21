@@ -29,6 +29,11 @@ RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
  && echo -n "crowsnest ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, `which make`" > /etc/sudoers.d/crowsnest
 
+#detect rpi
+RUN touch /boot/config.txt
+RUN touch /etc/rpi-issue
+
+
 ## Start Moonraker
 USER crowsnest
 
@@ -48,6 +53,7 @@ RUN echo "CROWSNEST_CAMERA_STREAMER_REPO_BRANCH=master"  >> tools/.config
 RUN echo "SYSCTL_SKIP=1" >> tools/.config
 
 RUN cat tools/.config
+
 
 RUN sudo make install
 
