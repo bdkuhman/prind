@@ -33,6 +33,13 @@ RUN ln -s /bin/systemctl /sbin/shutdown \
 USER crowsnest
 
 WORKDIR /opt/crowsnest
+
+ENV CROWSNEST_UNATTENDED=1
+ENV CROWSNEST_CONFIG_PATH=/opt/printer_data/config
+ENV CROWSNEST_LOG_PATH=/opt/printer_data/logs
+ENV CROWSNEST_ENV_PATH=/opt/printer_data/systemd
+
+
 RUN sudo make install
 
 
