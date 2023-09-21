@@ -9,7 +9,7 @@ WORKDIR /opt
 
 RUN git clone https://github.com/bdkuhman/crowsnest.git crowsnest \
   && cd crowsnest \
-  && git checkout master \
+  && git checkout sysctl_skip \
   && rm -rf .git
 
 WORKDIR /opt
@@ -41,6 +41,7 @@ RUN echo "CROWSNEST_CONFIG_PATH=/opt/printer_data/config" >> tools/.config
 RUN echo "CN_CONFIG_ROOTPATH=/opt/printer_data" >> tools/.config
 RUN echo "CROWSNEST_LOG_PATH=/opt/printer_data/logs" >> tools/.config
 RUN echo "CROWSNEST_ENV_PATH=/opt/printer_data/systemd" >> tools/.config
+RUN echo "SYSCTL_SKIP=1" >> tools/.config
 
 RUN cat tools/.config
 
