@@ -13,6 +13,6 @@ RUN cd crowsnest
 
 RUN echo -n "pi ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, `which make`" > /etc/sudoers.d/pi
 
-RUN cat /etc/passwd
-
+# RUN cat /etc/passwd
+WORKDIR /home/pi/crowsnest
 RUN  make install
