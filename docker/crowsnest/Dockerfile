@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-debian:latest
+FROM balenalib/raspberrypi3-debian:latest as base
 
 #ARG REPO=https://github.com/mainsail-crew/crowsnest.git
 #ARG VERSION=master
