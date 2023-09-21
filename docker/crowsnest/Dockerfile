@@ -27,7 +27,7 @@ RUN mkdir -p printer_data/run printer_data/gcodes printer_data/logs printer_data
 
 RUN ln -s /bin/systemctl /sbin/shutdown \
  && ln -s /bin/systemctl /sbin/reboot \
- && echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, `which make`" > /etc/sudoers.d/moonraker
+ && echo -n "crowsnest ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, `which make`" > /etc/sudoers.d/crowsnest
 
 ## Start Moonraker
 USER crowsnest
