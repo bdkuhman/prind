@@ -11,8 +11,8 @@ RUN git clone https://github.com/mainsail-crew/crowsnest.git
 
 RUN cd crowsnest
 
-RUN echo -n "moonraker ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, `which make`" > /etc/sudoers.d/moonraker
+RUN echo -n "pi ALL = NOPASSWD: /bin/systemctl, /sbin/shutdown, /sbin/reboot, `which make`" > /etc/sudoers.d/pi
 
-USER pi
+RUN cat /etc/passwd
 
-RUN sudo make install
+RUN  make install
