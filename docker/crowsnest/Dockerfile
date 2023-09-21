@@ -36,11 +36,11 @@ WORKDIR /opt/crowsnest
 
 
 RUN touch tools/.config
-RUN echo -e "CROWSNEST_UNATTENDED=1" >> tools/.config
-RUN echo -e "CROWSNEST_CONFIG_PATH=/opt/printer_data/config" >> tools/.config
-RUN echo -e "CN_CONFIG_ROOTPATH=/opt/printer_data" >> tools/.config
-RUN echo -e "CROWSNEST_LOG_PATH=/opt/printer_data/logs" >> tools/.config
-RUN echo -e "CROWSNEST_ENV_PATH=/opt/printer_data/systemd" >> tools/.config
+RUN echo "CROWSNEST_UNATTENDED=1" >> tools/.config
+RUN echo "CROWSNEST_CONFIG_PATH=/opt/printer_data/config" >> tools/.config
+RUN echo "CN_CONFIG_ROOTPATH=/opt/printer_data" >> tools/.config
+RUN echo "CROWSNEST_LOG_PATH=/opt/printer_data/logs" >> tools/.config
+RUN echo "CROWSNEST_ENV_PATH=/opt/printer_data/systemd" >> tools/.config
 
 RUN cat tools/.config
 
